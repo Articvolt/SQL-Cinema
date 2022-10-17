@@ -32,7 +32,7 @@ Votre base de données devra recenser également les acteurs de chacun desfilms.
   * Acteurs ayant joué dans 3 films ou plus.
 
 
-4-Grâce à un outil de maquettage (type draw.io), réalisezles écrans principaux de l’application permettant  de gérer  les  différentes  entités  de  la  base  de  données:  affichage,  insertion  / modification  /  suppression (apportezun soin particulier à l’ergonomie de l’application pour garder une navigation cohérente).
+4-Grâce à un outil de maquettage (type draw.io), réalisez les écrans principaux de l’application permettant de gérer les différentes entités de la base de données:  affichage, insertion / modification / suppression (apportez un soin particulier à l’ergonomie de l’application pour garder une navigation cohérente).
 
 
 5-En adoptant le design pattern MVC, développezl’ensemble des interfaces et des composants d’accès aux données.Vous rédigerez le dossier de synthèse du projet en y insérant l’ensemble des productions ci-dessus.
