@@ -1,4 +1,4 @@
 SELECT titre, anneeSortieFrance
 FROM film 
-WHERE anneeSortieFrance >= '2017-01-01' 
+WHERE anneeSortieFrance >= (CURRENT_DATE() - interval 5 year) 
 ORDER BY anneeSortieFrance DESC  
