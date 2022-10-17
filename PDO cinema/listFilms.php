@@ -4,7 +4,7 @@
     $user = 'root';
     $pass ='';
 
-    $db = new PDO('mysql:host=localhost;dbname=cinema;charset = utf8', $user, $pass);// mysql -> DSN(data source name)
+    $db = new PDO('mysql:host=localhost;dbname=cinema;charset=utf8', $user, $pass);// mysql -> DSN(data source name)
 
     //création d'une commande d'éxecution
     $SQLexecute = $db->prepare('SELECT * FROM film');
