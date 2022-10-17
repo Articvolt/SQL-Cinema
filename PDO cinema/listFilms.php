@@ -7,7 +7,7 @@
     $db = new PDO('mysql:host=localhost;dbname=cinema;charset=utf8', $user, $pass);// mysql -> DSN(data source name)
 
     //création d'une commande d'éxecution
-    $SQLexecute = $db->prepare('SELECT * FROM film');
+    $SQLexecute = $db->prepare('SELECT titre, DATE_FORMAT(anneeSortieFrance,"%Y"), synopsis, SEC_TO_TIME(duree*60), note  FROM film');
     //lancement de la commande
     $SQLexecute->execute();
     // methode pour récuperer les lignes de la base de données
@@ -55,7 +55,7 @@
                                     <?= $film['duree'] ?>
                                 </td>
                                 <td>
-                                    <?= $film['note'] ?>
+                                    <?= $film['note'] ?> / 5
                                 </td>
                             </tr>
                         <?php endforeach; ?>
