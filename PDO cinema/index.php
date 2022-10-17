@@ -7,6 +7,7 @@ $pass ='';
 
 // AFFICHAGE ERREUR
 // https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php/7307123-gerez-vos-cas-derreur#r-7307118
+// https://www.youtube.com/watch?v=-NTvIHHDmg8&list=PLkHw7J3J2iaoSgOn1zyHkY_6NwdrtVtfI&index=6&t=183s
 try {
 
   $db = new PDO('mysql:host=localhost;dbname=cinema;charset = utf8', $user, $pass);// mysql -> DSN(data source name)

@@ -12,17 +12,18 @@
             <table>
                 <thead>
                     <tr>
-                    <th>ID</th>
-                    <th>Name</th>
+                        <th>titre</th>
+                        <th>annee de sortie en france</th>
+                        <th>synopsis</th>
+                        <th>durée</th>
+                        <th>note</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                     <tr>
-                    <td><?php echo htmlspecialchars($row['id']); ?></td>
-                    <td><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td></td>
+                        <td></td>
                     </tr>
-                    <?php endwhile; ?>
                 </tbody>
             </table>
     </body>
@@ -30,4 +31,18 @@
 
 <?php
 
+    // creation login
+    $user = 'root';
+    $pass ='';
+
+    $db = new PDO('mysql:host=localhost;dbname=cinema;charset = utf8', $user, $pass);// mysql -> DSN(data source name)
+
+    //création d'une commande d'éxecution
+    $SQLexecute = $db->prepare('SELECT * FROM film');
+    //lancement de la commande
+    $SQLexecute->execute();
+    // methode pour récuperer les lignes de la base de données
+    $films = $SQLexecute->fetchAll();
+    //voir si la commande fonctionne
+    var_dump($films);
 ?>
