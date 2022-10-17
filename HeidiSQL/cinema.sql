@@ -24,16 +24,18 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`),
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema.acteur : ~5 rows (environ)
+-- Listage des données de la table cinema.acteur : ~7 rows (environ)
 /*!40000 ALTER TABLE `acteur` DISABLE KEYS */;
 INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(1, 3),
 	(2, 7),
 	(3, 8),
 	(4, 9),
-	(5, 10);
+	(5, 10),
+	(6, 12),
+	(7, 13);
 /*!40000 ALTER TABLE `acteur` ENABLE KEYS */;
 
 -- Listage de la structure de la table cinema. associer
@@ -77,9 +79,9 @@ CREATE TABLE IF NOT EXISTS `film` (
   PRIMARY KEY (`id_film`),
   KEY `id_realisateur` (`id_realisateur`),
   CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema.film : ~13 rows (environ)
+-- Listage des données de la table cinema.film : ~14 rows (environ)
 /*!40000 ALTER TABLE `film` DISABLE KEYS */;
 INSERT INTO `film` (`id_film`, `titre`, `anneeSortieFrance`, `synopsis`, `duree`, `note`, `id_realisateur`) VALUES
 	(1, 'Alien, le Huitième Passager', '1979-09-12', 'Durant le voyage de retour d\'un immense cargo spatial en mission commerciale de routine, ses passagers, cinq hommes et deux femmes plongés en hibernation, sont tirés de leur léthargie dix mois plus tôt que prévu par Mother, l\'ordinateur de bord.', 117, 5, 2),
@@ -94,7 +96,9 @@ INSERT INTO `film` (`id_film`, `titre`, `anneeSortieFrance`, `synopsis`, `duree`
 	(10, 'Pulp Fiction', '1994-09-21', 'L\'odyssée sanglante et burlesque de petits malfrats dans la jungle de Hollywood à travers trois histoires qui s\'entremêlent. Dans un restaurant, un couple de jeunes braqueurs, Pumpkin et Yolanda, discutent des risques que comporte leur activité. Deux truands, Jules Winnfield et son ami Vincent Vega, qui revient d\'Amsterdam, ont pour mission de récupérer une mallette au contenu mystérieux et de la rapporter à Marsellus Wallace.', 164, 5, 3),
 	(11, 'Inglorious Basterds', '2009-08-19', 'Dans la France occupée de 1940, Shosanna Dreyfus assiste à l\'exécution de sa famille tombée entre les mains du colonel nazi Hans Landa. Shosanna s\'échappe de justesse et s\'enfuit à Paris où elle se construit une nouvelle identité en devenant exploitante d\'une salle de cinéma. Quelque part ailleurs en Europe, le lieutenant Aldo Raine forme un groupe de soldats juifs américains pour mener des actions punitives particulièrement sanglantes contre les nazis.', 153, 4, 3),
 	(12, 'Indiana Jones 1', '1981-09-16', 'Professeur d\'archéologie, Indiana Jones parcourt le monde à la recherche de trésors. Son rival, le Français René Belloq, travaille pour les nazis qui rêvent de retrouver l\'Arche d\'alliance contenant les Tables de la Loi. Or, feu le professeur Ravenwood, père de Marion, l\'ex-petite amie d\'Indiana Jones, détenait une médaille permettant de localiser l\'arche. Jones part sur les traces de Marion au Népal.', 115, 5, 7),
-	(13, 'Star Wars, un nouvel espoir', '1977-10-19', 'La guerre civile fait rage entre l\'Empire galactique et l\'Alliance rebelle. Capturée par les troupes de choc de l\'Empereur menées par le sombre et impitoyable Dark Vador, la princesse Leia Organa dissimule les plans de l\'Etoile Noire.', 121, 5, 4);
+	(13, 'Star Wars, un nouvel espoir', '1977-10-19', 'La guerre civile fait rage entre l\'Empire galactique et l\'Alliance rebelle. Capturée par les troupes de choc de l\'Empereur menées par le sombre et impitoyable Dark Vador, la princesse Leia Organa dissimule les plans de l\'Etoile Noire.', 121, 5, 4),
+	(14, 'Le dernier Duel', '2021-10-13', 'En 1386, en Normandie, le chevalier Jean de Carrouges2, de retour d\'un voyage à Paris, retrouve son épouse, Marguerite de Thibouville. Celle-ci accuse l\'écuyer Jacques le Gris, vieil ami du chevalier, de l\'avoir violée. Le Gris se dit innocent.', 152, 4, 2),
+	(15, 'Mank', '2020-12-04', 'Dans ce film qui jette un point de vue caustique sur le Hollywood des années 30, le scénariste Herman J. Mankiewicz, alcoolique invétéré au regard acerbe, tente de boucler à temps le script de Citizen Kane d’Orson Welles.  ', 132, 3, 5);
 /*!40000 ALTER TABLE `film` ENABLE KEYS */;
 
 -- Listage de la structure de la table cinema. genre
@@ -104,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
   PRIMARY KEY (`id_genre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema.genre : ~7 rows (environ)
+-- Listage des données de la table cinema.genre : ~6 rows (environ)
 /*!40000 ALTER TABLE `genre` DISABLE KEYS */;
 INSERT INTO `genre` (`id_genre`, `nomGenre`) VALUES
 	(1, 'ACTION'),
@@ -129,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `jouer` (
   CONSTRAINT `FK_jouer_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema.jouer : ~13 rows (environ)
+-- Listage des données de la table cinema.jouer : ~15 rows (environ)
 /*!40000 ALTER TABLE `jouer` DISABLE KEYS */;
 INSERT INTO `jouer` (`id_acteur`, `id_film`, `id_role`) VALUES
 	(1, 10, 2),
@@ -144,7 +148,11 @@ INSERT INTO `jouer` (`id_acteur`, `id_film`, `id_role`) VALUES
 	(4, 7, 5),
 	(4, 9, 5),
 	(5, 12, 6),
-	(5, 13, 7);
+	(5, 13, 7),
+	(6, 1, 8),
+	(6, 2, 8),
+	(6, 3, 8),
+	(7, 13, 9);
 /*!40000 ALTER TABLE `jouer` ENABLE KEYS */;
 
 -- Listage de la structure de la table cinema. personne
@@ -154,23 +162,26 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `prenom` varchar(50) NOT NULL,
   `sexe` varchar(50) NOT NULL,
   `dateNaissance` date NOT NULL,
+  `dateMort` date DEFAULT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema.personne : ~11 rows (environ)
+-- Listage des données de la table cinema.personne : ~13 rows (environ)
 /*!40000 ALTER TABLE `personne` DISABLE KEYS */;
-INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `dateNaissance`) VALUES
-	(1, 'Jackson', 'Peter', 'M', '1961-10-31'),
-	(2, 'Scott', 'Ridley', 'M', '1937-11-30'),
-	(3, 'Tarantino', 'Quentin', 'M', '1963-03-27'),
-	(4, 'Lucas', 'Georges', 'M', '1944-05-14'),
-	(5, 'Fincher', 'David', 'M', '1962-08-28'),
-	(6, 'Cameron', 'James', 'M', '1954-08-16'),
-	(7, 'Portmann', 'Natalie', 'F', '1981-06-09'),
-	(8, 'McGregor', 'Ewan', 'M', '1971-03-31'),
-	(9, 'Christensen', 'Hayden', 'M', '1981-04-19'),
-	(10, 'Ford', 'Harrison', 'M', '1942-07-13'),
-	(11, 'Spielberg', 'Steven', 'M', '1946-12-18');
+INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `dateNaissance`, `dateMort`) VALUES
+	(1, 'Jackson', 'Peter', 'M', '1961-10-31', NULL),
+	(2, 'Scott', 'Ridley', 'M', '1937-11-30', NULL),
+	(3, 'Tarantino', 'Quentin', 'M', '1963-03-27', NULL),
+	(4, 'Lucas', 'Georges', 'M', '1944-05-14', NULL),
+	(5, 'Fincher', 'David', 'M', '1962-08-28', NULL),
+	(6, 'Cameron', 'James', 'M', '1954-08-16', NULL),
+	(7, 'Portmann', 'Natalie', 'F', '1981-06-09', NULL),
+	(8, 'McGregor', 'Ewan', 'M', '1971-03-31', NULL),
+	(9, 'Christensen', 'Hayden', 'M', '1981-04-19', NULL),
+	(10, 'Ford', 'Harrison', 'M', '1942-07-13', NULL),
+	(11, 'Spielberg', 'Steven', 'M', '1946-12-18', NULL),
+	(12, 'Weaver', 'Sigourney', 'F', '1949-10-08', NULL),
+	(13, 'Fisher', 'Carrie', 'F', '1956-10-21', '2016-12-27');
 /*!40000 ALTER TABLE `personne` ENABLE KEYS */;
 
 -- Listage de la structure de la table cinema. realisateur
@@ -199,9 +210,9 @@ CREATE TABLE IF NOT EXISTS `role` (
   `id_role` int(11) NOT NULL AUTO_INCREMENT,
   `nomRole` varchar(50) NOT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema.role : ~7 rows (environ)
+-- Listage des données de la table cinema.role : ~9 rows (environ)
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
 INSERT INTO `role` (`id_role`, `nomRole`) VALUES
 	(1, 'Jimmie Dimmick'),
@@ -210,7 +221,9 @@ INSERT INTO `role` (`id_role`, `nomRole`) VALUES
 	(4, 'Obi-Wan Kenobi'),
 	(5, 'Anakin SkyWalker'),
 	(6, 'Indiana Jones'),
-	(7, 'Han Solo');
+	(7, 'Han Solo'),
+	(8, 'Ellen Ripley'),
+	(9, 'Princesse Leia');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
