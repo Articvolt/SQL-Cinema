@@ -4,16 +4,22 @@
     $user = 'root';
     $pass ='';
 
-    $db = new PDO('mysql:host=localhost;dbname=cinema;charset=utf8', $user, $pass);// mysql -> DSN(data source name)
+    try {
+         $db = new PDO('mysql:host=localhost;dbname=cinema_ugo;charset=utf8', $user, $pass);// mysql -> DSN(data source name)
 
-    //création d'une commande d'éxecution
-    $SQLexecute = $db->prepare('SELECT titre, DATE_FORMAT(anneeSortieFrance,"%Y"), synopsis, SEC_TO_TIME(duree*60), note  FROM film');
-    //lancement de la commande
-    $SQLexecute->execute();
-    // methode pour récuperer les lignes de la base de données
-    $films = $SQLexecute->fetchAll();
-    //voir si la commande fonctionne
-    // var_dump($films);
+        //création d'une commande d'éxecution
+        $SQLexecute = $db->prepare('SELECT titre, DATE_FORMAT(anneeSortieFrance,"%Y"), synopsis, SEC_TO_TIME(duree*60), note  FROM film');
+        //lancement de la commande
+        $SQLexecute->execute();
+        // methode pour récuperer les lignes de la base de données
+        $films = $SQLexecute->fetchAll();
+        //voir si la commande fonctionne
+        // var_dump($films);
+    } catch (PDOException $e) {
+  
+        die('Erreur : '.$e->getMessage().'<br>');
+    }
+   
 ?>
 
 <!DOCTYPE html>
@@ -46,13 +52,13 @@
                                     <?= $film['titre'] ?>
                                 </td>
                                 <td>
-                                    <?= $film['anneeSortieFrance'] ?>
+                                    <?= $film['DATE_FORMAT(anneeSortieFrance,"%Y")'] ?>
                                 </td>
                                 <td class='synopsis'>
                                     <?= $film['synopsis'] ?>
                                 </td>
                                 <td>
-                                    <?= $film['duree'] ?>
+                                    <?= $film['SEC_TO_TIME(duree*60)'] ?>
                                 </td>
                                 <td>
                                     <?= $film['note'] ?> / 5
