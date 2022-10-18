@@ -8,7 +8,7 @@ try {
     $db = new PDO('mysql:host=localhost;dbname=cinema_ugo;charset=utf8', $user, $pass);// mysql -> DSN(data source name)
 
     //création d'une commande d'éxecution
-    $SQLexecute = $db->prepare('SELECT CONCAT(p.prenom," ", p.nom) AS identité, p.sexe, DATE_FORMAT(p.dateNaissance, "%d-%m-%Y") FROM realisateur r LEFT JOIN personne p ON p.id_personne = r.id_personne');
+    $SQLexecute = $db->prepare('SELECT CONCAT(p.prenom," ", p.nom) AS identité, p.sexe, p.dateNaissance FROM realisateur r LEFT JOIN personne p ON p.id_personne = r.id_personne');
                                 
     //lancement de la commande
     $SQLexecute->execute();
@@ -56,7 +56,7 @@ try {
                                     <?= $realisateur['sexe'] ?>
                                 </td>
                                 <td>
-                                    <?= $realisateur['DATE_FORMAT(dateNaissance, "%d-%m-%Y")'] ?>
+                                    <?= date("m/d/Y", strtotime($realisateur['dateNaissance'])) ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -8,7 +8,7 @@
          $db = new PDO('mysql:host=localhost;dbname=cinema_ugo;charset=utf8', $user, $pass);// mysql -> DSN(data source name)
 
         //création d'une commande d'éxecution
-        $SQLexecute = $db->prepare('SELECT titre, DATE_FORMAT(anneeSortieFrance,"%Y"), synopsis, SEC_TO_TIME(duree*60), note  FROM film');
+        $SQLexecute = $db->prepare('SELECT titre, anneeSortieFrance, synopsis, SEC_TO_TIME(duree*60), note  FROM film');
         //lancement de la commande
         $SQLexecute->execute();
         // methode pour récuperer les lignes de la base de données
@@ -52,7 +52,7 @@
                                     <?= $film['titre'] ?>
                                 </td>
                                 <td>
-                                    <?= $film['DATE_FORMAT(anneeSortieFrance,"%Y")'] ?>
+                                    <?= date("Y", strtotime($film['anneeSortieFrance'])) ?>
                                 </td>
                                 <td class='synopsis'>
                                     <?= $film['synopsis'] ?>
